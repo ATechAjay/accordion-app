@@ -1,4 +1,4 @@
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import "./AccordionHeading.css";
 
 // FaAngleDown FaAngleUp
@@ -6,16 +6,18 @@ function AccordionHeading(props) {
   // console.log(props.heading);
   // heading={props.title
 
-  const handleClass = () => {
-    console.log("Open the accordion!");
-  };
+  // const handleClass = () => {
+  //   console.log("Open the accordion!");
+  // };
 
   return (
-    <div className="accordionHeadingContainer" onClick={handleClass}>
+    <div
+      className='accordionHeadingContainer'
+      onClick={() => props.handleAccordion()}
+    >
       <p>{props.heading}</p>
-      <span>
-        <FaAngleDown />
-      </span>
+      {/* added ternary operator for angle icon to show up and down dynamically */}
+      <span>{props.isActive ? <FaAngleUp /> : <FaAngleDown />}</span>
     </div>
   );
 }
