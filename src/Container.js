@@ -1,14 +1,27 @@
+import { useState } from "react";
 import AccordionHeading from "./components/AccordionHeading";
 import AccordionPara from "./components/AccordionPara";
-
 import "./Container.css";
+
 const Container = (props) => {
-  let title = props.title;
-  let itemPara = props.itemPara;
+  let { title, itemPara } = props;
+  const [isActive, setIsActive] = useState(false);
+
+  // function for handling the accordion
+  const handleAccordion = () => {
+    // console.log("handle accordion");
+    setIsActive(!isActive);
+  };
+  // let title = props.title;
+  // let itemPara = props.itemPara;
   return (
-    <div className="accordionItem">
-      <AccordionHeading heading={title} />
-      <AccordionPara itemPara={itemPara} />
+    <div className='accordionItem'>
+      <AccordionHeading
+        heading={title}
+        handleAccordion={handleAccordion}
+        isActive={isActive}
+      />
+      <AccordionPara itemPara={itemPara} isActive={isActive} />
     </div>
   );
 };
